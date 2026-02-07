@@ -1,20 +1,22 @@
-# VulnBookshop — Sensitive Data Exposure Lab (admin.php)
+# Intentionally Vulnerable Bookshop
 
-Objective:
-1. Find the unlinked debug endpoint `/admin.php`.
-2. Retrieve the flag shown on that page (PUBLIC_LAB_FLAG).
+⚠️ WARNING ⚠️
 
-Rules:
-- This is a controlled lab environment. Do not attack other servers.
-- Tools: browsing, simple recon, directory enumeration (low-rate).
-- Do not attempt destructive actions. Be polite.
+This project is an **intentionally vulnerable web application** created
+**strictly for educational and security testing purposes**.
 
-Hints:
-- Check `/robots.txt` and HTML source comments.
-- Try common paths: `/admin.php`, `/debug.php`, `/old-admin/`.
+## Purpose
+- Learn web application security
+- Practice vulnerability assessment
+- Ethical hacking / penetration testing labs
 
-Submission:
-- The flag string (exact) and the URL where you found it.
-- One-line explanation of how you discovered the page.
+## DO NOT USE IN PRODUCTION
+This application contains deliberate security flaws such as:
+- SQL Injection
+- XSS
+- Insecure authentication
+- Poor input validation
 
-Instructor note: the public flag is provided via the environment variable `PUBLIC_LAB_FLAG`.
+## Legal Notice
+The author is **not responsible** for misuse of this code.
+Use only in controlled, authorized environments.
