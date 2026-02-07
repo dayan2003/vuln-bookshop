@@ -1,0 +1,339 @@
+﻿:root{
+  --bg:#F8F6F0;          /* Warm Cream */
+  --ink:#333333;         /* Charcoal */
+  --green:#2C5530;       /* Deep Forest */
+  --burg:#8B2635;        /* Burgundy */
+  --gold:#D4AF37;        /* Gold */
+  --ivory:#FFFEF7;       /* light alt */
+  --paper:#fff;
+  --muted:#6B6B6B;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --radius:16px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
+body{font-family:"Source Sans 3",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.6}
+
+h1,h2,h3,h4{font-family:"Playfair Display", Georgia, serif; color:var(--green); margin:0 0 .4rem}
+h1{font-size:clamp(1.9rem,2.8vw,3rem)}
+h2{font-size:clamp(1.4rem,2.1vw,2rem)}
+h3{font-size:clamp(1.05rem,1.6vw,1.25rem)}
+p{margin:.4rem 0 1rem}
+
+.container{width:min(1100px,92%); margin:0 auto}
+
+/* Header / Navbar */
+.site-header{position:sticky; top:0; background:var(--paper); box-shadow:var(--shadow); z-index:50}
+.header-row{display:grid; grid-template-columns: 1fr auto auto; gap:12px; align-items:center; padding:10px 0}
+.logo{display:flex; align-items:center; gap:.5rem; text-decoration:none}
+.logo-mark{font-size:1.4rem}
+.logo-text{font-weight:700; letter-spacing:.2px; color:var(--green)}
+
+.search{display:flex; align-items:stretch; gap:6px; min-width:260px}
+.search input{flex:1; padding:.55rem .7rem; border:1px solid #ddd; border-radius:10px}
+.search button{padding:.55rem .7rem; border:1px solid #ddd; background:var(--bg); border-radius:10px; cursor:pointer}
+.search input:focus{outline:2px solid var(--gold)}
+
+.nav{display:flex; gap:14px; align-items:center}
+.nav a, .nav button{font-weight:600; text-decoration:none; color:var(--ink); background:none; border:none; cursor:pointer}
+.nav a:hover, .nav button:hover{color:var(--gold); font-weight:bold;}
+.nav .admin-link{color:var(--gold); border-bottom:2px solid transparent; font-weight:bold;}
+.nav .admin-link:hover{border-color:var(--burg)}
+
+.nav-dropdown{position:relative}
+.nav-dropdown .menu{
+  position:absolute; top:120%; left:0; background:var(--paper); padding:.5rem;
+  border:1px solid #eee; border-radius:10px; box-shadow:var(--shadow); display:none; min-width:180px
+}
+.nav-dropdown:hover .menu{display:block}
+.nav-dropdown .menu a{display:block; padding:.35rem .6rem; border-radius:8px}
+.nav-dropdown .menu a:hover{background:#f3f3f3}
+
+/* Hero */
+.hero{
+  position:relative; min-height:52vh; display:grid; place-items:center;
+  background: url('/assets/img/hero.jpg') center/cover no-repeat, linear-gradient(180deg,#eee,#ddd);
+}
+.hero::after{content:""; position:absolute; inset:0; background:rgba(0,0,0,.28)}
+.hero .overlay{
+  position:relative; z-index:2; text-align:center; color:#fff; padding:2rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.35)
+}
+.hero h1{color:#fff}
+.hero p{opacity:.95; font-size:1.05rem}
+
+.btn{
+  display:inline-block; padding:.7rem 1rem; border-radius:999px; border:2px solid transparent;
+  font-weight:700; text-decoration:none; transition:.2s transform ease, .2s background ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--green); color:#fff}
+.btn-primary:hover{background:#234624}
+.btn-ghost{background:transparent; color:#fff; border-color:#fff; opacity:.95}
+.btn-small{padding:.45rem .7rem; font-size:.9rem; border-radius:10px; background:var(--burg); color:#fff; border:none}
+.btn-small:hover{filter:brightness(.95)}
+
+/* Section blocks */
+.section{padding:3rem 0}
+.section.alt{background:var(--ivory)}
+.section-head{margin-bottom:1.2rem}
+.section-head .sub{color:var(--muted)}
+
+/* Grids */
+.grid{display:grid; gap:18px}
+.categories{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.books{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.events{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* Tiles */
+.tile{position:relative; border-radius:var(--radius); overflow:hidden; text-decoration:none; color:#fff}
+.tile img{width:100%; height:180px; object-fit:cover; display:block; filter:contrast(1.05) saturate(1.05)}
+.tile span{
+  position:absolute; inset:auto 12px 12px; background:rgba(44,85,48,.92); padding:.45rem .7rem; border-radius:10px; font-weight:700
+}
+.tile:hover img{transform:scale(1.04); transition:transform .25s ease}
+
+/* Book cards */
+.book-card{
+  background:var(--paper); border:1px solid #eee; border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:14px; display:flex; flex-direction:column; gap:.35rem
+}
+.book-card .cover{
+  height:210px; border-radius:12px; background:
+    linear-gradient(135deg, var(--green), var(--burg));
+  opacity:.85
+}
+.book-card .title{color:var(--ink)}
+.book-card .author{color:var(--muted); margin-top:-.2rem}
+.price-row{display:flex; justify-content:space-between; align-items:center; margin-top:.2rem}
+.price{font-weight:700; color:var(--green)}
+
+/* Events */
+.event{background:var(--paper); border:1px solid #eee; border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)}
+
+/* Footer */
+.site-footer{margin-top:3rem; background:#1f2a1e; color:#eae7de; padding:2.2rem 0 1rem}
+.site-footer h4{color:#eae7de}
+.site-footer a{color:#eae7de; opacity:.9; text-decoration:none}
+.site-footer a:hover{opacity:1; text-decoration:underline}
+.footer-grid{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.newsletter, .newsletter-inline{display:flex; gap:.5rem}
+.newsletter input, .newsletter-inline input{
+  flex:1; padding:.55rem .7rem; border-radius:10px; border:none
+}
+.newsletter button, .newsletter-inline button{
+  background:var(--gold); color:#1d1d1d; border:none; border-radius:10px; padding:.55rem .8rem; font-weight:700
+}
+.newsletter-inline .btn{background:var(--green); color:#fff}
+.newsletter-inline .btn:hover{filter:brightness(.95)}
+.site-footer .copyright{margin-top:1rem; text-align:center; opacity:.8; font-size:.9rem}
+
+/* Utilities */
+hr{border:none; border-top:1px solid #e9e6df; margin:1rem 0}
+
+
+/* ===========================
+   Auth button styles (header)
+   =========================== */
+
+.nav { align-items:center; }
+
+/* Primary auth button (Profile / Login) */
+.nav .auth-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:.45rem .75rem;
+  border-radius:12px;
+  background: linear-gradient(180deg, var(--green), #24522a); /* subtle depth but same green family */
+  color: #fff;
+  font-weight:700;
+  border: 2px solid rgba(0,0,0,0.04);
+  box-shadow: 0 8px 22px rgba(44,85,48,0.08);
+  text-decoration:none;
+  transition: transform .14s ease, box-shadow .14s ease, opacity .14s ease;
+}
+
+/* Hover/active */
+.nav .auth-btn:hover,
+.nav .auth-btn:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(227, 227, 227, 0.12);
+  opacity: 0.98;
+  outline: none;
+}
+
+/* Ghost-style (Logout) — subtle, inverse */
+.nav .auth-ghost {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:.38rem .68rem;
+  border-radius:10px;
+  background: transparent;
+  color: var(--green);
+  font-weight:700;
+  border: 2px solid rgba(36,82,36,0.08);
+  text-decoration:none;
+  transition: background .14s ease, transform .12s ease;
+}
+
+/* Hover for ghost */
+.nav .auth-ghost:hover,
+.nav .auth-ghost:focus {
+  background: rgba(36,82,36,0.06);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* Keep admin link distinct but subtle */
+.nav .admin-link {
+  padding:.35rem .6rem;
+  border-radius:10px;
+  color:var(--burg);
+  text-decoration:none;
+  border:2px solid transparent;
+  transition: background .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.nav .admin-link:hover {
+  background: rgba(139,38,53,0.06);
+  border-color: rgba(139,38,53,0.12);
+  box-shadow: 0 8px 20px rgba(139,38,53,0.04);
+}
+
+/* Make the nav spacing consistent when new buttons added */
+.header-row .nav { gap:12px; }
+
+/* Mobile responsiveness: shrink paddings on small screens */
+@media (max-width:720px) {
+  .nav .auth-btn { padding:.35rem .6rem; border-radius:10px; font-size:.95rem; }
+  .nav .auth-ghost { padding:.3rem .5rem; }
+  .header-row { grid-template-columns: 1fr auto; }
+  .search { min-width: 150px; }
+}
+
+/* review.css — review form + cards styling (uses site variables) */
+
+/* Layout tweaks */
+.review-form {
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.98));
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 28px;
+  box-shadow: 0 12px 30px rgba(8,10,8,0.04);
+}
+
+.review-form h3 {
+  margin: 0 0 12px;
+  color: var(--green);
+}
+
+/* Form rows & fields */
+.form-row { display:flex; gap:14px; align-items:stretch; margin-bottom:14px; }
+.form-group { flex:1; min-width:0; }
+.form-group label { display:block; margin-bottom:6px; font-weight:600; color:var(--muted); font-size:.95rem; }
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+  width:100%;
+  padding:.6rem .75rem;
+  border-radius:10px;
+  border:1px solid #e6e4df;
+  background:var(--paper);
+  font-size:0.96rem;
+  color:var(--ink);
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline:none;
+  border-color: rgba(212,175,55,0.35);
+  box-shadow: 0 6px 18px rgba(212,175,55,0.06);
+}
+
+/* Textarea sizing */
+.form-group textarea { min-height:120px; resize:vertical; }
+
+/* Rating select smaller */
+.rating-select { width:110px; padding:.5rem .6rem; }
+
+/* Submit button */
+.submit-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.65rem .95rem;
+  border-radius:12px;
+  background: linear-gradient(180deg, var(--green), #234624);
+  color:#fff;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 10px 26px rgba(36,82,36,0.07);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.submit-btn:hover { transform:translateY(-3px); box-shadow:0 16px 36px rgba(36,82,36,0.10); }
+
+/* Reviews list */
+.reviews { margin-top:8px; display:grid; gap:18px; }
+
+/* Card */
+.review-card {
+  background: var(--paper);
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid #f0eee9;
+  box-shadow: 0 12px 30px rgba(6,8,6,0.04);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.review-card:hover { transform: translateY(-4px); box-shadow: 0 22px 46px rgba(6,8,6,0.07); }
+
+/* Header row inside card */
+.review-header { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:12px; }
+.book-info h3 { margin:0; font-size:1.05rem; color:var(--ink); }
+.book-author { margin-top:4px; color:var(--muted); font-style:italic; font-size:.92rem; }
+
+/* Rating */
+.rating { display:flex; align-items:center; gap:8px; color:var(--gold); font-weight:700; }
+
+/* Meta & content */
+.review-meta { color:var(--muted); font-size:.88rem; margin-bottom:10px; }
+.review-content { color:var(--ink); line-height:1.6; white-space:pre-wrap; }
+
+/* Challenge info box */
+.challenge-info {
+  background: linear-gradient(180deg, rgba(255,249,230,0.9), rgba(255,246,220,0.9));
+  border: 1px solid rgba(212,175,55,0.16);
+  padding: 18px;
+  border-radius: 12px;
+  margin-top:22px;
+}
+.challenge-info h3 { margin-top:0; color:var(--burg); }
+.challenge-info .muted-note { background:transparent; border-radius:6px; padding:6px 8px; font-family:monospace; display:inline-block; }
+
+/* Muted monospace */
+.muted-note { font-family:monospace; color:var(--muted); background:rgba(0,0,0,0.02); padding:6px 8px; border-radius:6px; }
+
+/* Small screens: stack form rows vertically */
+@media (max-width:880px) {
+  .form-row { flex-direction:column; }
+  .rating-select { width:100%; }
+  .review-header { flex-direction:column; align-items:stretch; gap:8px; }
+  .header-row { grid-template-columns: 1fr auto; }
+}
+
+/* Tiny utility tweaks */
+.review-card .review-content img { max-width:100%; height:auto; display:block; margin-top:8px; }
+.review-card code { background:#f6f5f0; padding:.12rem .3rem; border-radius:6px; font-family:monospace; }
+
+/* Accessibility: focus rings for interactive elements */
+input:focus, textarea:focus, select:focus, .submit-btn:focus, .auth-btn:focus {
+  box-shadow: 0 6px 18px rgba(212,175,55,0.08);
+  outline: 2px solid rgba(212,175,55,0.12);
+}
+
+/* make sure HR spacing is consistent */
+main hr { margin:20px 0; border-top:1px solid #efece6; }

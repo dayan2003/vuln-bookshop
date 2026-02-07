@@ -1,0 +1,6 @@
+# robots.txt - lab hints (public)
+User-agent: *
+Disallow: /private/
+Disallow: /tmp/
+
+# Developer note: debug endpoint (internal): /admin.php

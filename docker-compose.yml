@@ -1,0 +1,47 @@
+﻿version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: vuln_bookshop_web
+    ports:
+      - "127.0.0.1:8000:80"
+    volumes:
+      - ./www:/var/www/html:cached
+    depends_on:
+      - db
+    networks:
+      - vuln-network
+    environment:
+      # Database connection used by the web app (readable inside container)
+      - DB_HOST=db
+      - DB_NAME=vulnapp
+      - DB_USER=user
+      - DB_PASS=pass
+      # Public flag shown on admin.php (override in production via host env)
+      - PUBLIC_LAB_FLAG=FLAG{public_lab_flag_2025}
+      # Optional: if you later use the masked admin page with Basic Auth:
+      # - LAB_ADMIN_USER=lab
+      # - LAB_ADMIN_PASS=lab123
+
+  db:
+    image: mysql:8.0
+    container_name: vuln_bookshop_db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: vulnapp
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - vuln-network
+
+networks:
+  vuln-network:
+    driver: bridge
+
+volumes:
+  db_data:
